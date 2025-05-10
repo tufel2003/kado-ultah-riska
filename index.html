@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kejutan Spesial untukmu!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #cce7ff, #e6f0ff);
+      color: #333;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    header {
+      background: linear-gradient(90deg, #001f4d, #003366);
+      padding: 40px 20px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1, h2, p {
+      margin: 20px 0;
+    }
+
+    .teks-kedip {
+      font-size: 36px;
+      font-weight: 700;
+      animation: kedip 1s infinite;
+      position: relative;
+      display: inline-block;
+    }
+
+    @keyframes kedip {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .emotikon {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      font-size: 24px;
+      animation: terbang 3s infinite ease-in-out;
+      opacity: 0;
+      display: none;
+    }
+
+    @keyframes terbang {
+      0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-50%) translateY(-120px);
+        opacity: 0;
+      }
+    }
+
+    .emotikon:nth-child(2) { left: 45%; animation-delay: 0s; }
+    .emotikon:nth-child(3) { left: 55%; animation-delay: 0.5s; }
+    .emotikon:nth-child(4) { left: 40%; animation-delay: 1s; }
+    .emotikon:nth-child(5) { left: 60%; animation-delay: 1.5s; }
+    .emotikon:nth-child(6) { left: 43%; animation-delay: 2s; }
+    .emotikon:nth-child(7) { left: 57%; animation-delay: 2.5s; }
+    .emotikon:nth-child(8) { left: 50%; animation-delay: 3s; }
+
+    .login-form {
+      margin-top: 30px;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .login-button {
+      background: linear-gradient(to right, #3366cc, #6699ff);
+      color: white;
+      padding: 12px;
+      border: none;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .login-button:hover {
+      background: linear-gradient(to right, #003399, #3366cc);
+    }
+
+    .content {
+      display: none;
+      padding: 20px;
+    }
+
+    .surprise {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff5e57;
+    }
+
+    .button {
+      background-color: #001f4d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #003366;
+    }
+
+    .gift-image {
+      width: 100%;
+      max-width: 300px;
+      margin: 20px auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .gift-gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      padding: 10px;
+      background: #ffffffcc;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    /* Tambahan untuk animasi gambar muncul satu per satu */
+    .fade-image {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 1s ease, transform 0.8s ease;
+    }
+
+    /* New styles for video container */
+    .video-container {
+      margin: 20px auto;
+      max-width: 500px;
+      padding: 10px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      background: #f0f8ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-container:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Mini-game styles */
+    #miniGame {
+      margin-top: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      display: none;
+      text-align: center;
+    }
+
+    #miniGame button {
+      background-color: #3366cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    #miniGame button:hover {
+      background-color: #003399;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="teks-kedip">
+      HELLO RISKA
+      <div class="emotikon">🎂</div>
+      <div class="emotikon">🎂</div>
+      <div class="emotikon">🎂</div>
+      <div class="emotikon">🎂</div>
+      <div class="emotikon">🎂</div>
+      <div class="emotikon">ָ໋🎂</div>
+      <div class="emotikon">🎂</div>
+    </div>
+  </header>
+
+  <div class="login-form">
+    <h2>Masukkan Username & Password</h2>
+    <input type="text" id="username" class="login-input" placeholder="User" required />
+    <input type="password" id="password" class="login-input" placeholder="Password" required />
+    <button class="login-button" onclick="login()">Login</button>
+  </div>
+
+  <div class="content" id="content">
+    <p>HAPPY BIRTHDAY <strong id="user-name"></strong>!</p>
+    <p class="surprise">Aku punya Kejutan Buatmu!</p>
+    <button class="button" onclick="showGift()">Lihat Kejutan 🎁</button>
+
+    <div id="gift" style="display:none;">
+      <h2>Kejutanmu adalah:</h2>
+      <div class="gift-gallery">
+        <div class="poem" style="font-family: 'Quicksand', sans-serif; color: #003366; font-size: 18px; font-weight: 600; text-align: left; max-width: 480px; margin: 0 auto 20px auto; white-space: pre-line; line-height: 1.5;">
+          Untuk Riska di Hari Bahagia
+
+Hari ini cerah, seindah senyummu,
+Waktu membawa doa yang tak pernah jemu,
+Riska tercinta, di usiamu yang baru,
+Semoga bahagia selalu menyertaimu.
+
+Langkahmu lembut, tapi penuh daya,
+Hidupmu semoga makin kaya makna,
+Dengan harapan yang terus menyala,
+Menuju impian yang kau damba.
+
+Sahabat sejati, hangat dan tulus,
+Hatimu indah, tak pernah terputus,
+Semoga rezekimu terus mengalir deras,
+Dan cintamu tumbuh tanpa batas.
+
+Selamat ulang tahun, Riska yang manis,
+Semoga hidupmu penuh harmoni dan kisah manis,
+Sehat, sukses, dan cinta yang tak habis,
+Jadilah bintang yang terus bersinar paling anggun.
+
+
+
+
+aku gak bisa nyanyi , tapi aku bisa menyanyikan hati-mu dengan lagu ini tolong dengarkan sampai selesai , dan aku kasih game juga buat bersenang senang setelahnya.
+        </div>
+        <audio id="surpriseAudio" src="audio/SELAMAT ULANGTAHUN.mp3" preload="auto"></audio>
+      </div>
+      <button class="button" onclick="startMiniGame()">Mainkan Permainan Mini 🎮</button>
+    </div>
+
+    <div id="funnyGame" style="display:none; margin-top: 30px; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); max-width: 400px; margin-left: auto; margin-right: auto; text-align: center;">
+      <h3>Permainan Tangkap Emoji</h3>
+      <p>Klik emoji yang muncul sebelum hilang! Tangkap sampai 10 score akan ada HADIAH MENARIK</p>
+      <div id="emojiContainer" style="position: relative; height: 150px; border: 2px solid #001f4d; border-radius: 15px; margin: 20px auto; overflow: hidden; background: #e6f0ff;"></div>
+      <p>Skor: <span id="score">0</span></p>
+      <button class="button" onclick="startFunnyGame()">Mulai Permainan</button>
+      <button class="button" onclick="endFunnyGame()" style="margin-top: 20px;">Selesai Bermain</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; Created by Tufa'il Ashabi.
+  </footer>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      if (username === "A" && password === "B") {
+        document.getElementById('user-name').innerText = username;
+        document.getElementById('content').style.display = 'block';
+        document.querySelector('.login-form').style.display = 'none';
+      } else {
+        alert('Nama pengguna atau Password salah. Silakan coba lagi.');
+      }
+    }
+
+    function showGift() {
+      const gift = document.getElementById('gift');
+      gift.style.display = 'block';
+
+      // Play the surprise audio automatically
+      const audio = document.getElementById('surpriseAudio');
+      if (audio) {
+        audio.play();
+        // Start the funny game only after audio ends
+        audio.onended = () => {
+          startFunnyGame();
+        };
+      }
+
+      // Ambil semua gambar yang ada dalam .gift-gallery
+      const images = gift.querySelectorAll(".gift-gallery img");
+      images.forEach((img, index) => {
+        setTimeout(() => {
+          img.classList.add('fade-image-visible');
+          img.style.opacity = 1;
+          img.style.transform = 'scale(1)';
+        }, index * 700); // jeda antar gambar 0.7 detik
+      });
+
+      // Start confetti animation
+      startConfetti();
+    }
+
+    // Confetti animation code adapted from https://codepen.io/anon/pen/LYPGQe
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const ctx = confettiCanvas.getContext('2d');
+    let confettiPieces = [];
+    let confettiAnimationFrame;
+
+    function resizeCanvas() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class ConfettiPiece {
+      constructor() {
+        this.x = Math.random() * confettiCanvas.width;
+        this.y = Math.random() * confettiCanvas.height - confettiCanvas.height;
+        this.size = Math.random() * 8 + 4;
+        this.speed = Math.random() * 3 + 2;
+        this.angle = Math.random() * 360;
+        this.spin = Math.random() * 0.1 + 0.01;
+        this.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      }
+      update() {
+        this.y += this.speed;
+        this.angle += this.spin;
+        if (this.y > confettiCanvas.height) {
+          this.y = -this.size;
+          this.x = Math.random() * confettiCanvas.width;
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+        ctx.restore();
+      }
+    }
+
+    function startConfetti() {
+      confettiPieces = [];
+      for (let i = 0; i < 150; i++) {
+        confettiPieces.push(new ConfettiPiece());
+      }
+      if (!confettiAnimationFrame) {
+        confettiLoop();
+      }
+      setTimeout(stopConfetti, 8000); // Stop after 8 seconds
+    }
+
+    function confettiLoop() {
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      confettiPieces.forEach(piece => {
+        piece.update();
+        piece.draw();
+      });
+      confettiAnimationFrame = requestAnimationFrame(confettiLoop);
+    }
+
+    function stopConfetti() {
+      cancelAnimationFrame(confettiAnimationFrame);
+      confettiAnimationFrame = null;
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    }
+
+    // Mini-game: Guess the number between 1 and 10
+    let secretNumber;
+    function startMiniGame() {
+      secretNumber = Math.floor(Math.random() * 10) + 1;
+      document.getElementById('miniGame').style.display = 'block';
+      document.getElementById('gameMessage').innerText = '';
+      document.getElementById('guessInput').value = '';
+    }
+
+    function checkGuess() {
+      const guess = Number(document.getElementById('guessInput').value);
+      const message = document.getElementById('gameMessage');
+      if (!guess || guess < 1 || guess > 10) {
+        message.innerText = 'Tolong masukkan angka antara 1 sampai 10.';
+        return;
+      }
+      if (guess === secretNumber) {
+        message.innerText = 'Selamat! Tebakanmu benar 🎉';
+      } else if (guess < secretNumber) {
+        message.innerText = 'Tebakanmu terlalu kecil. Coba lagi!';
+      } else {
+        message.innerText = 'Tebakanmu terlalu besar. Coba lagi!';
+      }
+    }
+
+    function endMiniGame() {
+      document.getElementById('miniGame').style.display = 'none';
+    }
+  </script>
+
+  <script>
+    // Funny game logic: Catch the emoji
+    let funnyGameActive = false;
+    let score = 0;
+    let emojiInterval;
+    const emojis = ['😂', '🤣', '😜', '😎', '🤪', '😇', '🙃', '😛'];
+
+    function startFunnyGame() {
+      funnyGameActive = true;
+      score = 0;
+      document.getElementById('score').innerText = score;
+      document.getElementById('funnyGame').style.display = 'block';
+      document.getElementById('gift').style.display = 'none';
+      clearEmojis();
+      emojiInterval = setInterval(showRandomEmoji, 1000);
+
+      // Show emoticons when game starts
+      const emoticons = document.querySelectorAll('.emotikon');
+      emoticons.forEach(emoticon => {
+        emoticon.style.display = 'block';
+        emoticon.style.opacity = '1';
+
+        // Add click event listener to increment score
+        emoticon.addEventListener('click', emoticonClickHandler);
+      });
+    }
+
+    function emoticonClickHandler() {
+      if (!funnyGameActive) return;
+      score++;
+      document.getElementById('score').innerText = score;
+
+      // Optional: add some visual feedback on click
+      this.style.transform = 'scale(1.2)';
+      setTimeout(() => {
+        this.style.transform = 'scale(1)';
+      }, 200);
+
+      // Stop game and show voucher notification at score 10
+      if (score === 10) {
+        endFunnyGame();
+        showVoucherNotification();
+      }
+    }
+
+    function showRandomEmoji() {
+      if (!funnyGameActive) return;
+      const container = document.getElementById('emojiContainer');
+      clearEmojis();
+
+      const emoji = document.createElement('div');
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.position = 'absolute';
+      emoji.style.fontSize = '40px';
+      emoji.style.cursor = 'pointer';
+
+      // Random position inside container
+      const maxX = container.clientWidth - 40;
+      const maxY = container.clientHeight - 40;
+      const x = Math.floor(Math.random() * maxX);
+      const y = Math.floor(Math.random() * maxY);
+      emoji.style.left = x + 'px';
+      emoji.style.top = y + 'px';
+
+      emoji.onclick = () => {
+        if (!funnyGameActive) return;
+        score++;
+        document.getElementById('score').innerText = score;
+        clearEmojis();
+
+        // Stop game and show voucher notification at score 10
+        if (score === 10) {
+          endFunnyGame();
+          showVoucherNotification();
+        }
+      };
+
+      container.appendChild(emoji);
+
+      // Remove emoji after 900ms if not clicked
+      setTimeout(() => {
+        if (container.contains(emoji)) {
+          clearEmojis();
+        }
+      }, 900);
+    }
+
+    function clearEmojis() {
+      const container = document.getElementById('emojiContainer');
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+    }
+
+    function endFunnyGame() {
+      funnyGameActive = false;
+      clearInterval(emojiInterval);
+      clearEmojis();
+      document.getElementById('funnyGame').style.display = 'none';
+      document.getElementById('gift').style.display = 'block';
+
+      // Hide emoticons when game ends
+      const emoticons = document.querySelectorAll('.emotikon');
+      emoticons.forEach(emoticon => {
+        emoticon.style.display = 'none';
+        emoticon.style.opacity = '0';
+
+        // Remove click event listener
+        emoticon.removeEventListener('click', emoticonClickHandler);
+      });
+
+      // Remove voucher notification if visible
+      const notif = document.getElementById('voucherNotification');
+      if (notif) {
+        notif.remove();
+      }
+    }
+
+    // Remove old game buttons and add new button to start funny game
+    const giftDiv = document.getElementById('gift');
+    // Remove existing msini-game buttons
+    const oldMiniGameButton = giftDiv.querySelector('button[onclick="startMiniGame()"]');
+    if (oldMiniGameButton) giftDiv.removeChild(oldMiniGameButton);
+    const oldShootingGameButton = giftDiv.querySelector('button[onclick="startShootingGame()"]');
+    if (oldShootingGameButton) giftDiv.removeChild(oldShootingGameButton);
+
+    // Add new funny game button
+    const funnyGameButton = document.createElement('button');
+    funnyGameButton.className = 'button';
+    funnyGameButton.textContent = 'Mainkan Permainan Lucu 🤪';
+    funnyGameButton.style.marginTop = '10px';
+    funnyGameButton.onclick = startFunnyGame;
+    giftDiv.appendChild(funnyGameButton);
+
+    // Voucher notification function
+    function showVoucherNotification() {
+      // Check if notification already exists
+      if (document.getElementById('voucherNotification')) return;
+
+      const notif = document.createElement('div');
+      notif.id = 'voucherNotification';
+      notif.style.position = 'fixed';
+      notif.style.bottom = '20px';
+      notif.style.left = '50%';
+      notif.style.transform = 'translateX(-50%)';
+      notif.style.backgroundColor = '#001f4d';
+      notif.style.color = 'white';
+      notif.style.padding = '15px 25px';
+      notif.style.borderRadius = '10px';
+      notif.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.3)';
+      notif.style.zIndex = '10000';
+      notif.style.display = 'flex';
+      notif.style.alignItems = 'center';
+      notif.style.gap = '15px';
+
+      const message = document.createElement('span');
+      message.innerText = 'Selamat anda mendapatkan voucer saldo gopay senilai 50rb, silahkan klaim dengan format berikut " RISKA_CANTIK_NO GOPAY_50K"';
+
+      const button = document.createElement('a');
+      button.href = 'https://wa.me/628999662444';
+      button.target = '_blank';
+      button.rel = 'noopener noreferrer';
+      button.innerText = 'Klaim Voucher';
+      button.style.backgroundColor = '#ff5e57';
+      button.style.color = 'white';
+      button.style.padding = '10px 20px';
+      button.style.borderRadius = '8px';
+      button.style.textDecoration = 'none';
+      button.style.fontWeight = 'bold';
+      button.style.cursor = 'pointer';
+
+      notif.appendChild(message);
+      notif.appendChild(button);
+
+      document.body.appendChild(notif);
+    }
+  </script>
